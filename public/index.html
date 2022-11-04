@@ -2,71 +2,91 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Packery puzzle</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="./style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"
-    integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"
-    integrity="sha512-aUhL2xOCrpLEuGD5f6tgHbLYEXRpYZ8G5yD+WlFrXrPy2IrWBlu6bih5C9H6qGsgqnU6mgx6KtU8TreHpASprw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"
+        integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"
+        integrity="sha512-aUhL2xOCrpLEuGD5f6tgHbLYEXRpYZ8G5yD+WlFrXrPy2IrWBlu6bih5C9H6qGsgqnU6mgx6KtU8TreHpASprw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
 </head>
 
 <body>
-  <!-- partial:index.partial.html -->
-  <div
-    style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; margin-left: 50px; margin-right: 50px;">
+    <div
+        style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; margin-left: 50px; margin-right: 50px;">
+        <div>
+            <h2>Moves</h2>
+            <h3 id="moves"></h3>
+        </div>
+        <div>
+            <h2 style="display: none;" id="lasts">Last Score</h2>
+            <h3 id="last_moves"></h3>
+        </div>
+
+    </div>
+
+
+    <div class="dialog-container">
+        <div class="dialog is-waiting">
+            <p class="dialog__text">&nbsp;</p>
+            <div>
+                <button class="button try-again-button">Try again</button>
+                <button class="button close-dialog-button">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div data-tile="a" class="tile h2 bgx3 bgy1"></div>
+        <div data-tile="b" class="tile bgx2 bgy1"></div>
+        <div data-tile="c" class="tile bgx1 bgy4"></div>
+        <div data-tile="d" class="tile bgx1 bgy1"></div>
+        <div data-tile="e" class="tile w2 bgx2 bgy4"></div>
+        <div data-tile="f" class="tile h2"></div>
+        <div data-tile="g" class="tile bgx3"></div>
+        <div data-tile="h" class="tile bgx3 bgy3"></div>
+        <div data-tile="i" class="tile bgx1 bgy3"></div>
+        <div data-tile="j" class="tile h2 bgy3"></div>
+        <div data-tile="k" class="tile h2 bgx2 bgy2"></div>
+        <div data-tile="l" class="tile w2 bgy2"></div>
+        <div data-tile="m" class="tile w2 bgx1"></div>
+    </div>
+
     <div>
-      <h2>Moves</h2>
-      <h3 id="moves"></h3>
+        <button class="button shuffle-button">Shuffle</button>
     </div>
-    <div>
-      <h2 style="display: none;" id="lasts">Last Score</h2>
-      <h3 id="last_moves"></h3>
-    </div>
-
-  </div>
-
-
-  <div class="dialog-container">
-    <div class="dialog is-waiting">
-      <p class="dialog__text">&nbsp;</p>
-      <div>
-        <button class="button try-again-button">Try again</button>
-        <button class="button close-dialog-button">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="grid">
-    <div data-tile="a" class="tile h2 bgx3 bgy1"></div>
-    <div data-tile="b" class="tile bgx2 bgy1"></div>
-    <div data-tile="c" class="tile bgx1 bgy4"></div>
-    <div data-tile="d" class="tile bgx1 bgy1"></div>
-    <div data-tile="e" class="tile w2 bgx2 bgy4"></div>
-    <div data-tile="f" class="tile h2"></div>
-    <div data-tile="g" class="tile bgx3"></div>
-    <div data-tile="h" class="tile bgx3 bgy3"></div>
-    <div data-tile="i" class="tile bgx1 bgy3"></div>
-    <div data-tile="j" class="tile h2 bgy3"></div>
-    <div data-tile="k" class="tile h2 bgx2 bgy2"></div>
-    <div data-tile="l" class="tile w2 bgy2"></div>
-    <div data-tile="m" class="tile w2 bgx1"></div>
-  </div>
-
-  <div>
-    <button class="button shuffle-button">Shuffle</button>
-  </div>
-  <!-- partial -->
-  <script src='https://unpkg.com/packery@2/dist/packery.pkgd.js'></script>
-  <script src='https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js'></script>
-  <script src="./script.js"></script>
-
+    <script src='https://unpkg.com/packery@2/dist/packery.pkgd.js'></script>
+    <script src='https://unpkg.com/draggabilly@2/dist/draggabilly.pkgd.js'></script>
+    <script src="./script.js"></script>
 </body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyCkAHi2Cl3UBE_b8ChGa8Zfzd2uIR7aCfQ",
+        authDomain: "puzzul-7c770.firebaseapp.com",
+        projectId: "puzzul-7c770",
+        storageBucket: "puzzul-7c770.appspot.com",
+        messagingSenderId: "345149082896",
+        appId: "1:345149082896:web:3b17ce0b445f4a67192995",
+        measurementId: "G-FYRBDHEWCZ"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
 
 </html>
